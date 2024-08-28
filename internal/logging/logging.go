@@ -59,7 +59,7 @@ func Init() {
 	if err != nil {
 		panic(err)
 	}
-	allFile, err := os.OpenFile("logging/result.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0744)
+	allFile, err := os.OpenFile("logs/result.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0744)
 	if err != nil {
 		panic(err)
 	}

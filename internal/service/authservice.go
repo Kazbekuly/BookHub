@@ -40,6 +40,7 @@ func (s *AuthService) CreateUser(user model.User) (int, error) {
 }
 
 func (s *AuthService) GenerateToken(login, password string) (string, error) {
+	fmt.Println(login)
 	user, err := s.repo.GetUser(login, generatePasswordHash(password))
 	if err != nil {
 		return "", err
@@ -51,6 +52,7 @@ func (s *AuthService) GenerateToken(login, password string) (string, error) {
 		},
 		user.Id,
 	})
+	fmt.Println(token)
 	return token.SignedString([]byte(signinKey))
 }
 

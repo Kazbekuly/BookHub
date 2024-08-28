@@ -25,6 +25,7 @@ func Run() error {
 	handlers := handler.NewHandler(services)
 	_ = fmt.Sprintf("Starting server...\nhttp://localhost%v/\n", ":"+cfg.Listen.Port)
 	if err := srv.Run(cfg, handlers.InitRoutes()); err != nil {
+		fmt.Println(err)
 		logger.Info("Error while starting application")
 	}
 	return err

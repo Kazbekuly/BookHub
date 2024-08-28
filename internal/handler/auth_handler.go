@@ -21,7 +21,7 @@ func (h *Handler) signUP(c *gin.Context) {
 }
 
 type SignIn struct {
-	Login    string `json:"login" binding:"required"`
+	Username string `json:"username" binding:"required"`
 	Password string `json:"password" binding:"required"`
 }
 
@@ -30,7 +30,7 @@ func (h *Handler) signIn(c *gin.Context) {
 	if err := c.BindJSON(&input); err != nil {
 		return
 	}
-	token, err := h.services.GenerateToken(input.Login, input.Password)
+	token, err := h.services.GenerateToken(input.Username, input.Password)
 	if err != nil {
 		return
 	}
